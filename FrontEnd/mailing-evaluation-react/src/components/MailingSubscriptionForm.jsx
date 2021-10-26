@@ -5,7 +5,7 @@ export class MailingSubscriptionForm extends Component {
 
     constructor(props){
         super(props);
-        this.state = {lastName:'', firstName:'', email:'', showModal:false};
+        this.state = {lastName:'', firstName:'', email:'', showModal:false, modalMessage:''};
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,7 +34,7 @@ export class MailingSubscriptionForm extends Component {
         })
         .then(response => response.json())
         .then(response => {
-            this.setState({showModal:true});
+            this.setState({showModal:true,modalMessage:response.result.message});
             console.log(response)
         })
         .catch(err => {
@@ -45,7 +45,7 @@ export class MailingSubscriptionForm extends Component {
     }
 
     onModalClose(){
-        this.setState({lastName:'', firstName:'', email:'', showModal:false});
+        this.setState({lastName:'', firstName:'', email:'', showModal:false, modalMessage:''});
     }
 
     render() {
@@ -67,7 +67,7 @@ export class MailingSubscriptionForm extends Component {
                     <input type="submit" value="Subscribe!" />
                 </form>
                 <Modal show={this.state.showModal} onClose={this.onModalClose.bind(this)}>
-                    <div style={{color:"black", textAlign:"center"}}>You've been subscribed with the following email: {this.state.email}</div>
+                    <div style={{color:"black", textAlign:"center"}}>{this.state.modalMessage}</div>
                 </Modal>
             </Fragment>
         )
