@@ -8,6 +8,8 @@ namespace MailingEvaluationAPI.Features.MailingList.Data
 {
     public class MailingListContext : DbContext
     {
+        public DbSet<EmailSubscriber> EmailSubscribers { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             if (!builder.IsConfigured)
