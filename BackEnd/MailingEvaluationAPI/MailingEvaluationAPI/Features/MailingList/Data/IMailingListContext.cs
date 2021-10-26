@@ -9,5 +9,7 @@ namespace MailingEvaluationAPI.Features.MailingList.Data
     public interface IMailingListContext
     {
         public DbSet<EmailSubscriber> EmailSubscribers { get; set; }
+
+        int SaveChanges();
     }
 }
