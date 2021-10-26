@@ -13,7 +13,7 @@ namespace MailingEvaluationAPI.Features.MailingList
         public class Query : IRequest<List<EmailSubscriber>>
         {
             public string LastName { get; set; }
-            public bool SortAscending { get; set; }
+            public bool SortAscending { get; set; } = true;
         }
 
         public class QueryHandler : IRequestHandler<Query, List<EmailSubscriber>>
