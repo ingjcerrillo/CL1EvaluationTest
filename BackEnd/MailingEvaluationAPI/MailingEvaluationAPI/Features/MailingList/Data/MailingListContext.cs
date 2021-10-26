@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MailingEvaluationAPI.Features.MailingList.Data
 {
-    public class MailingListContext : DbContext
+    public class MailingListContext : DbContext, IMailingListContext
     {
         public DbSet<EmailSubscriber> EmailSubscribers { get; set; }
 

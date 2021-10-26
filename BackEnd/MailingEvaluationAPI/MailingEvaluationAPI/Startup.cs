@@ -36,6 +36,7 @@ namespace MailingEvaluationAPI
                 });
             });
             services.AddDbContext<MailingListContext>();
+            services.AddScoped<IMailingListContext, MailingListContext>();
             services.AddControllers();
             services.AddMediatR(typeof(Startup));
         }
