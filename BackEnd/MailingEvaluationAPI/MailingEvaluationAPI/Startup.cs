@@ -1,3 +1,4 @@
+using MailingEvaluationAPI.Features.MailingList.Data;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +35,7 @@ namespace MailingEvaluationAPI
                     builder.AllowAnyOrigin();
                 });
             });
+            services.AddDbContext<MailingListContext>();
             services.AddControllers();
             services.AddMediatR(typeof(Startup));
         }
