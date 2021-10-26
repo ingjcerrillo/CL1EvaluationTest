@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Modal from 'simple-react-modal';
 
 export class MailingSubscriptionForm extends Component {
 
@@ -33,6 +34,7 @@ export class MailingSubscriptionForm extends Component {
         })
         .then(response => response.json())
         .then(response => {
+            this.setState({showModal:true});
             console.log(response)
         })
         .catch(err => {
@@ -40,6 +42,10 @@ export class MailingSubscriptionForm extends Component {
         });
 
         e.preventDefault();
+    }
+
+    onModalClose(){
+        this.setState({lastName:'', firstName:'', email:'', showModal:false});
     }
 
     render() {
@@ -60,6 +66,9 @@ export class MailingSubscriptionForm extends Component {
                     </label>
                     <input type="submit" value="Subscribe!" />
                 </form>
+                <Modal show={this.state.showModal} onClose={this.onModalClose.bind(this)}>
+                    <div style={{color:"black", textAlign:"center"}}>You've been subscribed with the following email: {this.state.email}</div>
+                </Modal>
             </Fragment>
         )
     }
